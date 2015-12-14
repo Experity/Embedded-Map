@@ -1,68 +1,57 @@
 <html>
   <head>
-    <!-- This is the code for getting the wait time information-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://clockwisemd.com/hospitals/clockwise_api.js"></script>
-
-    <script>
-      jQuery(document).ready( function() {
-        jQuery('body').on('clockwise_waits_loaded', function (e, id) {
-          // This one populates the stylized wait display
-          jQuery('#current_wait_'+id).html(Clockwise.Waits[id]);
-          // This one populates the basic wait display
-          jQuery('#current_wait_simple_'+id).html(Clockwise.Waits[id]);
-        });
-        loadAllWaits();
-      });
-      function loadAllWaits() {
-        Clockwise.CurrentWait(293, 'html');
-        // To Add additional wait times for other clinics, copy line above with different ID.
-        setTimeout(function(){loadAllWaits()},60000);
-      }
-    </script>
+    <!-- This is the code for setting up the map -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
+    <script src="http://cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
+    <script src="https:/clockwisemd.com/groups/18.js" type="text/javascript"></script>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600" media="screen" rel="stylesheet" />
+    <link href="https://s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
 
     <style>
-      .clockwise_current_wait{display:inline;}
+      .row-fluid_maps{ height:300px; }
     </style>
     <!-- This is the end of the head code -->
   </head>
   <body>
     <div align="center">
-      <h2>This is how the wait time widget can appear on your website if you use our supplied style</h2>
-
-      <!-- This is the code for the button on the web page -->
-      <div style="display: inline-block; padding: 12px 20px 20px; margin-bottom: 0;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px;
-        line-height: 20px; color: #ffffff; text-align: center; background-color:#2a7bbb;
-        cursor: default; -webkit-border-radius: 14px; -moz-border-radius: 14px;
-        border-radius: 14px; width:300px;">
-        <div style="font-size:36px; line-height:40px; display:inline; font-weight:bold;
-        letter-spacing:2px;">Skip </div>
-        <div style="font-size:30px; line-height:40px; display:inline; font-weight:100;
-        letter-spacing:2px; font-style:italic;">the </div>
-        <div style="font-size:36px; line-height:40px; display:inline; font-weight:bold;
-        letter-spacing:2px;">Wait</div>
-        <h3 style="font-size:18px; line-height:20px; font-weight:300; margin-top:0px;
-        margin-bottom:10px; display: block;">Current Wait is:
-          <div id="current_wait_293" style="display:inline;"></div> Minutes</h3>
-        <a href="https://clockwisemd.com/hospitals/293/appointments/new" style="color:white;
-        text-decoration: none; font-size: 26px; line-height:30px; font-weight:bold;
-        letter-spacing:2px; margin-top:15px; padding: 5px 10px; margin-bottom: 0;
-        text-align: center; cursor: pointer;
-        background-image: -moz-linear-gradient(top, #FF6600, #FF0000);
-        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FF6600), to(#FF0000));
-        background-image: -webkit-linear-gradient(top, #FF6600, #FF0000);
-        background-image: -o-linear-gradient(top, #FF6600, #FF0000);
-        background-image: linear-gradient(to bottom, #FF6600, #FF0000);
-        background-repeat: repeat-x; border: 1px solid #FF6600;
-        -webkit-border-radius: 10px; -moz-border-radius: 10px;
-        border-radius: 10px;">Reserve my spot</a>
-      </div>
-      <!-- This is the end of the web page code -->
-
-      <h2>Below is an example of just the basic wait time display</h2>
-      <h4>Current wait time: <span id="current_wait_simple_293"></span> minutes</h4>
+      <h2>This is how the Map widget can appear on your website if you use our supplied style</h2>
     </div>
+
+    <!-- This is the code for the map on the web page -->
+    <div class="groups-map" id="map-panel">
+      <div class="address-box" id="panel">
+        <div class="row-fluid" style="display:flex;flex-direction:row;">
+          <input style="flex-grow:10;height:5%;" id="address" placeholder="Current Address" type="text" value="" />
+          <input style="flex-grow:1;" class="btn btn-primary" id="address-search-btn" onclick="codeAddress()" type="button" value="Search Nearby" />
+          &nbsp;
+          <input style="flex-grow:1;" class="btn btn-primary" id="current-location-btn" onclick="findPosition()" style="display:none;" type="button" value="Use My Location" />
+          &nbsp;
+          <input class="btn btn-danger" id="clear-address-btn" onclick="reDrawMap()" style="display:none;flex-grow:1;" type="button" value="Clear Search" />
+        </div>
+      </div>
+      <div class="row-fluid row-fluid_maps">
+        <div id="map-canvas">
+        </div>
+        <div class="directions-panel" id="directionsPanel" style="float:right;height:65%;display:none">
+        </div>
+        <div class="directions-clinic-info" id="clinicInfo" style="float:right;height:35%;display:none">
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid row-fluid_maps" id="group-hospital-list">
+    </div>
+    <div style="display:none;">
+      <!-- This is a clockwise mustache.js template. For more info goto https://mustache.github.io/ -->
+      <script id="map_full_hospital" type="text/template"><div class="map-window-full" id="hospital-window-{{id}}"><h5 class="opensans"><strong>{{{hospital_name_link}}}</strong></h5><h5 class="opensans">{{{drive_time}}}</h5><h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h5><h5 class="opensans">{{{address_1}}}</h5><h5 class="opensans">{{{address_2}}}</h5><h5 class="opensans">{{{city}}}, {{{state}}} {{{zip}}}</h5><h5 class="opensans">{{{phone_number}}}</h5>{{{schedule_button}}}</div></script>
+      <script id="map_wait_window" type="text/template"><div class="map-window-wait" id="hospital-window-{{id}}"><h5 class="opensans"><strong>{{{hospital_name_link}}}</strong></h5><h5 class="opensans">{{{drive_time}}}</h5><h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h5></div></script>
+      <script id="list_full_hospital" type="text/template"><div class="span4 margin-group margin-top text-center" id="list-hospital-{{id}}" style="height:300px"><h4 class="opensans"><a class="map-tooltip" onclick="focusMap({{id}})" target="_blank" title=""><img src="{{icon_url}}" />&nbsp;</a><strong>{{{hospital_name_link}}}</strong></h4><h4 class="opensans drive_time_header">{{{drive_time}}}</h4><h4 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h4><h4 class="opensans">{{{address_1}}}</h4><h4 class="opensans">{{{address_2}}}</h4><h4 class="opensans">{{{city}}}, {{{state}}} {{{zip}}}</h4><h4 class="opensans">{{{phone_number}}}</h4>{{{schedule_button}}}</div></script>
+      <!-- This is the end of the mustache.js template -->
+    </div>
+    <!-- This is the end of the web page code -->
   </body>
 
 </html>
