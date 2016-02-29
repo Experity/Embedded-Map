@@ -21,7 +21,7 @@ This first snippet of code loads the dependencies for the maps and styles.  It s
 <script src="http://maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
 <script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
 <script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
-<script src="https:/clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+<script src="https://www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600" media="screen" rel="stylesheet" />
 <link href="https://s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
 
