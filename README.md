@@ -68,3 +68,30 @@ This next snippet of code will render a map on your webpage with a search bar fo
 </div>
 
 ```
+
+---
+### Advanced Topics
+
+If you would like to do custom styling, the maps API provides all necessary information so as to
+populate your groups page.  Include the same libraries as before, except now in your own
+JavaScript you'll want to look at the `hsp_info` object.
+
+```javascript
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
+<script src="http://cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
+<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
+<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
+<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
+<script src="https://www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+
+<script>
+  console.log(hsp_info);
+</script>
+
+```
+
+The above snippet will print the hospital's in _[Group_ID]_ on the console.  Through the `hsp_info`
+variable you'll have access to the hospital's name, address, hours of operation, as well as
+longitude and latitude coordinates so that you can use that data to populate a custom map.
