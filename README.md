@@ -97,7 +97,14 @@ This next snippet of code will render a map on your webpage with a search bar fo
 </div>
 
 ```
-
+Above, you'll notice that the current wait is currently set to use `{{{current_queue_length}}}`, which will display the shortest length currently at your clinic.  If you wish to use a different representation, your options are as follows:
+```
+{{{current_queue_length}}} // Number of patients in the shortest line 
+{{{current_queue_total}}} // Total number of patients in all lines
+{{{current_wait}}} // Shortest wait time in minutes from now
+{{{current_wait_hhmm}}} // Shortest wait time represented as an actual time
+{{{current_next_available}}} // The next available time if one were to enter the queue right now
+```
 ---
 ### Advanced Topics
 
