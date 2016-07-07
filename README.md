@@ -1,20 +1,23 @@
 # Clockwise.MD Website Map
+
 ### A Quick Note
+
 This is a patient facing map that is meant to be added to your clinic or hospital's public
-facing website.  It does not in any way affect functionality of the application.
+facing website. It does not in any way affect functionality of the application.
 
 ---
 ### Demonstration
+
 [Click here to see the widget in action](http://lightshedhealth.github.io/Website-Map-API/)
 
 ---
 ### Beginner's Guide
-This first snippet of code loads the dependencies for the maps and styles.  It should go inside the
-`<head>` tag of your web page.  You want to replace __[GROUP_ID]__ with your group's id number
+
+This first snippet of code loads the dependencies for the maps and styles. It should go inside the
+`<head>` tag of your web page. You want to replace __[GROUP_ID]__ with your group's id number
 (exclude the brackets) where noted.
 
 ```javascript
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
 <script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
@@ -26,17 +29,16 @@ This first snippet of code loads the dependencies for the maps and styles.  It s
 <link href="//s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
 
 <style>
-  .row-fluid_maps{ height:300px; }
+  .row-fluid_maps { height:300px; }
+  #group-hospital-list .margin-group { margin-left: 0; }
 </style>
-
 ```
 
 ---
-This next snippet of code will render a map on your webpage with a search bar for patients to enter their location.  This can be placed anywhere within the
-`<body>` tag on your web page.
+This next snippet of code will render a map on your webpage with a search bar for patients to enter
+their location. This can be placed anywhere within the `<body>` tag on your web page.
 
 ```html
-
 <div class="groups-map" id="map-panel">
   <div class="address-box" id="panel">
     <div class="row-fluid" style="display:flex;flex-direction:row;">
@@ -95,9 +97,12 @@ This next snippet of code will render a map on your webpage with a search bar fo
   </script>
   <!-- This is the end of the mustache.js template -->
 </div>
-
 ```
-Above, you'll notice that the current wait is currently set to use `{{{current_queue_length}}}`, which will display the shortest length currently at your clinic.  If you wish to use a different representation, your options are as follows:
+
+Above, you'll notice that the current wait is currently set to use `{{{current_queue_length}}}`,
+which will display the shortest length currently at your clinic. If you wish to use a different
+representation, your options are as follows:
+
 ```
 {{{current_queue_length}}} // Number of patients in the shortest line
 {{{current_queue_total}}} // Total number of patients in all lines
@@ -105,15 +110,16 @@ Above, you'll notice that the current wait is currently set to use `{{{current_q
 {{{current_wait_hhmm}}} // Shortest wait time represented as an actual time
 {{{current_next_available}}} // The next available time if one were to enter the queue right now
 ```
+
 ---
+
 ### Advanced Topics
 
 If you would like to do custom styling, the maps API provides all necessary information so as to
-populate your groups page.  Include the same libraries as before, except now in your own
+populate your groups page. Include the same libraries as before, except now in your own
 JavaScript you'll want to look at the `hsp_info` object.
 
 ```javascript
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
 <script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
@@ -125,9 +131,8 @@ JavaScript you'll want to look at the `hsp_info` object.
 <script>
   console.log(hsp_info);
 </script>
-
 ```
 
-The above snippet will print the hospital's in _[Group_ID]_ on the console.  Through the `hsp_info`
+The above snippet will print the hospital's in _[Group_ID]_ on the console. Through the `hsp_info`
 variable you'll have access to the hospital's name, address, hours of operation, as well as
 longitude and latitude coordinates so that you can use that data to populate a custom map.
