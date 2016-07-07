@@ -15,15 +15,15 @@ This first snippet of code loads the dependencies for the maps and styles.  It s
 
 ```javascript
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
-<script src="http://cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
-<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
-<script src="https://www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600" media="screen" rel="stylesheet" />
-<link href="https://s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
+<script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
+<script src="//www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600" media="screen" rel="stylesheet" />
+<link href="//s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
 
 <style>
   .row-fluid_maps{ height:300px; }
@@ -99,7 +99,7 @@ This next snippet of code will render a map on your webpage with a search bar fo
 ```
 Above, you'll notice that the current wait is currently set to use `{{{current_queue_length}}}`, which will display the shortest length currently at your clinic.  If you wish to use a different representation, your options are as follows:
 ```
-{{{current_queue_length}}} // Number of patients in the shortest line 
+{{{current_queue_length}}} // Number of patients in the shortest line
 {{{current_queue_total}}} // Total number of patients in all lines
 {{{current_wait}}} // Shortest wait time in minutes from now
 {{{current_wait_hhmm}}} // Shortest wait time represented as an actual time
@@ -114,13 +114,13 @@ JavaScript you'll want to look at the `hsp_info` object.
 
 ```javascript
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
-<script src="http://cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
-<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
-<script src="https://s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
-<script src="https://www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
+<script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
+<script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
+<script src="//www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
 
 <script>
   console.log(hsp_info);
