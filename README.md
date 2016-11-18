@@ -1,19 +1,19 @@
 # Clockwise.MD Website Map
 
-### A Quick Note
+## A Quick Note
 
 This is a patient facing map that is meant to be added to your clinic or hospital's public
 facing website. It does not in any way affect functionality of the application.
 
 ---
 
-### Demonstration
+## Demonstration
 
 [Click here to see the widget in action](http://lightshedhealth.github.io/Website-Map-API/)
 
 ---
 
-### Beginner's Guide
+## Beginner's Guide
 
 This first snippet of code loads the dependencies for the maps and styles. It should go inside the
 `<head>` tag of your web page. You want to replace __[GROUP_ID]__ with your group's id number
@@ -103,7 +103,7 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
 
 ---
 
-### Customizing output
+## Customizing output
 
 Each of the mustache templates copied into your page allows for customization. There are three
 templates that are used to customize information being shown on the page. Each template can
@@ -116,6 +116,8 @@ be identified with:
 - `#map_full_hospital` - When clicking on a map pin, this template controls what's in the popup.
 - `#map_wait_window` - Each pin by default has a little description above the pin, this controls the contents there.
 - `#list_full_hospital` - All locations are listed below the map, this controls the information displayed there.
+
+### Example: Changing the number of patients waiting
 
 The current wait is currently set to use `{{{current_queue_length}}}`, which will display the shortest
 length currently at your clinic. If you wish to use a different representation, your options are as follows:
@@ -150,6 +152,8 @@ And change `{{{current_queue_length}}}` to `{{{current_wait}}}` and make it look
   </script>
 ```
 
+### Example: Remove elements on page
+
 Or maybe you want to remove the buttons of the bottom of the page listed under each hospital location.
 
 Take the following snippet:
@@ -183,6 +187,8 @@ to this:
       <h4 class="opensans">{{{phone_number}}}</h4>
 ```
 
+### Example: Remove the links
+
 Another example is if you don't want the hospital names to be links, change:
 
 ```html
@@ -201,7 +207,7 @@ to
 
 ---
 
-### Advanced Topics
+## Advanced Topics
 
 If you would like to do custom styling, the maps API provides all necessary information so as to
 populate your groups page. Include the same libraries as before, except now in your own
@@ -227,7 +233,7 @@ longitude and latitude coordinates so that you can use that data to populate a c
 
 ---
 
-### Building your own map
+## Building your own map
 
 The information on locations and wait_times for a group can be found at:
 
