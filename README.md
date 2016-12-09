@@ -37,7 +37,8 @@ This first snippet of code loads the dependencies for the maps and styles. It sh
 ```
 
 ---
-This next snippet of code will render a map on your webpage with a search bar for patients to enter
+This next snippet of code will render a map on your webpage with a search bar for 
+s to enter
 their location. This can be placed anywhere within the `<body>` tag on your web page.
 
 ```html
@@ -69,7 +70,7 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
     <div class="map-window-full" id="hospital-window-{{id}}">
       <h5 class="opensans"><strong>{{{hospital_name_link}}}</strong></h5>
       <h5 class="opensans">{{{drive_time}}}</h5>
-      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h5>
+      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;in line.</h5>
       <h5 class="opensans">{{{address_1}}}</h5>
       <h5 class="opensans">{{{address_2}}}</h5>
       <h5 class="opensans">{{{city}}}, {{{state}}} {{{zip}}}</h5>
@@ -80,7 +81,7 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
     <div class="map-window-wait" id="hospital-window-{{id}}">
       <h5 class="opensans"><strong>{{{hospital_name_link}}}</strong></h5>
       <h5 class="opensans">{{{drive_time}}}</h5>
-      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h5>
+      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;in line.</h5>
     </div>
   </script>
   <script id="list_full_hospital" type="text/template">
@@ -91,7 +92,7 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
         </a><strong>{{{hospital_name_link}}}</strong>
       </h4>
       <h4 class="opensans drive_time_header">{{{drive_time}}}</h4>
-      <h4 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h4><h4 class="opensans">{{{address_1}}}</h4>
+      <h4 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;in line.</h4><h4 class="opensans">{{{address_1}}}</h4>
       <h4 class="opensans">{{{address_2}}}</h4>
       <h4 class="opensans">{{{city}}}, {{{state}}} {{{zip}}}</h4>
       <h4 class="opensans">{{{phone_number}}}</h4>{{{schedule_button}}}
@@ -135,7 +136,7 @@ For instance, if you want to display the wait time instead of the number of pati
     <div class="map-window-wait" id="hospital-window-{{id}}">
       <h5 class="opensans"><strong>{{{hospital_name_link}}}</strong></h5>
       <h5 class="opensans">{{{drive_time}}}</h5>
-      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h5>
+      <h5 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;in line.</h5>
     </div>
   </script>
 ```
@@ -167,7 +168,7 @@ Take the following snippet:
         </a><strong>{{{hospital_name_link}}}</strong>
       </h4>
       <h4 class="opensans drive_time_header">{{{drive_time}}}</h4>
-      <h4 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;patient in line.</h4><h4 class="opensans">{{{address_1}}}</h4>
+      <h4 class="opensans"><strong class="current_wait_placeholder">{{{current_queue_length}}}</strong>&nbsp;in line.</h4><h4 class="opensans">{{{address_1}}}</h4>
       <h4 class="opensans">{{{address_2}}}</h4>
       <h4 class="opensans">{{{city}}}, {{{state}}} {{{zip}}}</h4>
       <h4 class="opensans">{{{phone_number}}}</h4>{{{schedule_button}}}
