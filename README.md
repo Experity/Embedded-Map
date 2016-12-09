@@ -16,8 +16,7 @@ facing website. It does not in any way affect functionality of the application.
 ## Beginner's Guide
 
 This first snippet of code loads the dependencies for the maps and styles. It should go inside the
-`<head>` tag of your web page. You want to replace __[GROUP_ID]__ with your group's id number
-(exclude the brackets) where noted.
+`<head>` tag of your web page. You want to change __REPLACEME__ with your group's id number where noted.
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -26,7 +25,7 @@ This first snippet of code loads the dependencies for the maps and styles. It sh
 <script src="//maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
-<script src="//www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+<script src="//www.clockwisemd.com/groups/REPLACEME.js" type="text/javascript"></script>
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600" media="screen" rel="stylesheet" />
 <link href="//s3-us-west-1.amazonaws.com/clockwisepublic/clockwise_map.css" media="all" rel="stylesheet" />
 
@@ -221,14 +220,14 @@ JavaScript you'll want to look at the `hsp_info` object.
 <script src="//maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
-<script src="//www.clockwisemd.com/groups/[GROUP_ID].js" type="text/javascript"></script>
+<script src="//www.clockwisemd.com/groups/REPLACEME.js" type="text/javascript"></script>
 
 <script>
   console.log(hsp_info);
 </script>
 ```
 
-The above snippet will print the hospital's in _[Group_ID]_ on the console. Through the `hsp_info`
+The above snippet will print the hospital's in _REPLACEME_ on the console. Through the `hsp_info`
 variable you'll have access to the hospital's name, address, hours of operation, as well as
 longitude and latitude coordinates so that you can use that data to populate a custom map.
 
@@ -239,5 +238,5 @@ longitude and latitude coordinates so that you can use that data to populate a c
 The information on locations and wait_times for a group can be found at:
 
 ```
-https://www.clockwisemd.com/groups/[GROUP_ID].json
+https://www.clockwisemd.com/groups/REPLACEME.json
 ```
