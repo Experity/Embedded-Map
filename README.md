@@ -22,7 +22,7 @@ This first snippet of code loads the dependencies for the maps and styles. It sh
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
 <script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
-<script src="//maps.googleapis.com/maps/api/js?v=3&amp;amp;sensor=false" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js" type="text/javascript"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
 <script src="//www.clockwisemd.com/groups/REPLACEME.js" type="text/javascript"></script>
@@ -36,6 +36,7 @@ This first snippet of code loads the dependencies for the maps and styles. It sh
 ```
 
 ---
+
 This next snippet of code will render a map on your webpage with a search bar for patients to enter
 their location. This can be placed anywhere within the `<body>` tag on your web page.
 
@@ -99,6 +100,25 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
   <!-- This is the end of the mustache.js template -->
 </div>
 ```
+
+---
+
+## Google Maps API key
+
+Google requires the use of a key to identify your site. The script tag in your header will need to change from:
+
+```
+<script src="//maps.googleapis.com/maps/api/js" type="text/javascript"></script>
+```
+
+to:
+
+```
+<script src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY" type="text/javascript"></script>
+```
+
+Google's documentation on [obtaining an API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+will guide you through the process.
 
 ---
 
