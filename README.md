@@ -1,4 +1,4 @@
-# Clockwise.MD Website Map
+# Clockwise.MD Embedded Map
 
 ## A Quick Note
 
@@ -9,7 +9,7 @@ facing website. It does not in any way affect functionality of the application.
 
 ## Demonstration
 
-[Click here to see the widget in action](http://lightshedhealth.github.io/Website-Map-API/)
+[Click here to see the widget in action](http://lightshedhealth.github.io/Embedded-Map-API/)
 
 ---
 
