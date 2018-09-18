@@ -16,13 +16,14 @@ facing website. It does not in any way affect functionality of the application.
 ## Beginner's Guide
 
 This first snippet of code loads the dependencies for the maps and styles. It should go inside the
-`<head>` tag of your web page. You want to change __REPLACEME__ with your group's id number where noted.
+`<head>` tag of your web page. You want to change __REPLACEME__ with your group's id number and
+__YOUR_MAPS_API_KEY__ with your own Google Maps Platform API key where noted.
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/mustache.js"></script>
 <script src="//cdn.pubnub.com/pubnub.min.js" type="text/javascript"></script>
-<script src="//maps.googleapis.com/maps/api/js" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=YOUR_MAPS_API_KEY" type="text/javascript"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/geoposition.js"></script>
 <script src="//s3-us-west-1.amazonaws.com/clockwisepublic/infobox.js"></script>
 <script src="//www.clockwisemd.com/groups/REPLACEME.js" type="text/javascript"></script>
@@ -105,20 +106,18 @@ their location. This can be placed anywhere within the `<body>` tag on your web 
 
 ## Google Maps API key
 
-Google requires the use of a key to identify your site. The script tag in your header will need to change from:
+As of June 2018, Google requires the use of a key to identify your site and no longer supports keyless access
+to the Maps API (see the [Maps Platform User Guide](https://cloud.google.com/maps-platform/user-guide/) for
+more detail). Google's documentation on [obtaining an API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+will guide you through the process of creating a project or adding a key to an existing project.
 
+Once you have an active key, you will need to include it in the `src` URL used to include the Maps javascript API:
 ```
-<script src="//maps.googleapis.com/maps/api/js" type="text/javascript"></script>
-```
-
-to:
-
-```
-<script src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=YOUR_MAPS_API_KEY" type="text/javascript"></script>
 ```
 
-Google's documentation on [obtaining an API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
-will guide you through the process.
+Failure to include a valid key will result in a low-resolution map watermarked with “
+[for development purposes only](https://s3-us-west-1.amazonaws.com/clockwisepublic/no_key_error.png)."
 
 ---
 
